@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap%22");
+
+:root{
+    /* Font */
+    --body-font: 'Poppins', sans-serif;
+}
+
+* {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+    color: #000;
+}
+
+body {
+    margin: 0px;
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+}
+
+.card {
+    text-align: center;
+    background-color: #FFF;
+    border-radius: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,.15);
+    transition: .3s;
+    padding: 25px;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,.15);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.card-content {
+    margin-top:100px;
+    margin-bottom:100px;
+    margin-right:150px;
+    margin-left:150px;
+}
+
+.card-header {
+    margin-bottom: 75px;
+    font-weight: normal;
+    font-family: var(--body-font);
+}
+
+#login-button {
+    width: 100px;
+    color: #FFF;
+    font-size: 12px;
+    padding: 12px 0;
+    background-color: #3B28CC;
+    border: 0;
+    border-radius: 5px;
+    outline: none;
+    margin-top: 20px;
+    transition: .3s;
+    font-family: var(--body-font);
+}
+
+#login-button:hover{
+    cursor: pointer;
+    background-color: #6855FA;
+    color: #FFF;    
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: grid;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.form-label {
+    text-align: left;
+    margin-right: 200px;
+    font-family: var(--body-font)
+}
