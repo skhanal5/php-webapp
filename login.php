@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
             echo "Logged In!";
             $_SESSION['user_name'] = $row['user_name'];
             $_SESSION['id'] = $row['id'];
-            header('Location: resource.html');
+            header('Location: resource.php');
             exit();
         }
     } else {
