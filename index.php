@@ -14,17 +14,18 @@
                 <div class = "card">
                     <div class="card-content">
                         <h2 class = "card-header">
-                            PHP Mock Webapp
+                                PHP Mock Webapp
                         </h2>
-                        <form action="login.php" method = "post">
+                        <?php if (isset($_GET['error'])) { ?>
+                                <span class = "card-error"> <?php echo $_GET['error']; ?> </span>
+                        <?php } ?>
+                        <form action="login.php" method = "POST">
                             <div>
                                 <label class = "form-label" for="uname">Username</label>
                                 <input type="text" name="uname" required>
                                 <label class = "form-label" for="password">Password</label>
                                 <input type="password" name="password" required>
-                                <button type="submit" id = "login-button">
-                                    Log In
-                                </button>
+                                <input type="submit" id = "login-button" name="submit">
                             </div>
                         </form>
                     </div>
