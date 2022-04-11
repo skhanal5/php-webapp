@@ -72,7 +72,7 @@ body {
     border: 0;
     border-radius: 5px;
     outline: none;
-    margin-top: 20px;
+    margin-top: 75px;
     transition: .3s;
     font-family: var(--body-font);
 }
@@ -96,5 +96,9 @@ input[type=text], input[type=password] {
 .form-label {
     text-align: left;
     margin-right: 200px;
-    font-family: var(--body-font)
+    font-family: var(--body-font);
+}
+
+.card-pg {
+    font-family: var(--body-font);
 }
