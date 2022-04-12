@@ -34,7 +34,7 @@
                                 <input type="text" name="uname" required>
                                 <label class = "form-label" for="password">Password</label>
                                 <input type="password" name="password" required>
-                                <input type="submit" id = "login-button" name="submit">
+                                <input type="submit" id = "login-button" name="submit" value='Log In'>
                             </div>
                         </form>
                     </div>
