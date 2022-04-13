@@ -1,11 +1,3 @@
-<?php
-    session_start();
-    if (!isset($_SESSION['user_name'])) {
-        header("Location: index.php");
-        exit();
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,14 +13,9 @@
             <div class="container">
                 <div class = "card">
                     <div class="card-content">
-                        <p class="card-pg">
-                            You have successfully accessed the secure web resource.
-                        </p>
-                        <form action="logout.php" method = "post">
-                            <button type="submit" id = "login-button">
-                                Log Out
-                            </button>
-                        </form>
+                        <?php if (isset($_GET['error'])) { ?>
+                                <span class = "card-error"> <?php echo $_GET['error']; ?> </span>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
