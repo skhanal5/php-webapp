@@ -1,7 +1,23 @@
 <?php
     session_start();
-    if (!isset($_SESSION['user_name'])) {
-        header("Location: index.php");
+
+    // Checks client side certificate for second layer of authenticatio
+    if($_SERVER['SSL_CLIENT_VERIFY']) {
+
+        // Checks client attribute (in this case user) for authorization into web resource
+        if ($_SERVER['SSL_CLIENT_S_DN_CN'] === 'localhostclient') {
+            
+            //Validates first (basic) layer of authentication
+            if (!isset($_SESSION['user_name'])) {
+                header("Location: index.php?error=Unauthenticated user detected");
+                exit();
+            }
+        } else {
+            header("Location: unauthorized.php?error=Invalid user group attempted to access this web resource." . "Your user group is: ". $_SERVER['SSL_CLIENT_S_DN_CN']);
+            exit();
+        }
+    } else {
+        header("Location: unauthorized.php?error=Invalid user group attempted to access this web resource." . $_SERVER['SSL_CLIENT_S_DN_CN']);
         exit();
     }
 ?>
@@ -22,7 +38,7 @@
                 <div class = "card">
                     <div class="card-content">
                         <p class="card-pg">
-                            You have successfully accessed the secure web resource.
+                            "You (localhostclient) have successfully accessed the secure web resource".
                         </p>
                         <form action="logout.php" method = "post">
                             <button type="submit" id = "login-button">

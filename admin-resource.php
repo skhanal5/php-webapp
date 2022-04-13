@@ -13,7 +13,7 @@
                 exit();
             }
         } else {
-            header("Location: unauthorized.php?error=Invalid user group attempted to access this web resource." . $_SERVER['SSL_CLIENT_S_DN_CN']);
+            header("Location: unauthorized.php?error=Invalid user group attempted to access this web resource." . "Your user group is: ". $_SERVER['SSL_CLIENT_S_DN_CN']);
             exit();
         }
     } else {
