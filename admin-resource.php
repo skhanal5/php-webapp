@@ -5,6 +5,7 @@
     if($_SERVER['SSL_CLIENT_VERIFY']) {
         if (!isset($_SESSION['user_name'])) {
             header("Location: index.php?error=Unauthenticated user detected");
+            $_SESSION['url'] = "admin-resource.php";
             exit();
         } else {
             // Checks client attribute (in this case user) for authorization into web resource
