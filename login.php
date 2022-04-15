@@ -19,8 +19,13 @@ if (isset($_POST['submit'])) {
             echo "Logged In!";
             $_SESSION['user_name'] = $username;
             $_SESSION['id'] = $id;
-            header('Location: resource.php');
-            exit();
+            if ($_SESSION['url']=="resource.php") {
+                header('Location: resource.php');
+                exit();
+            } else {
+                header('Location: admin-resource.php');
+                exit();
+            }
         } else {
             header("Location: index.php?error=Incorrect Username or Password");
             exit();

@@ -10,6 +10,7 @@
             //Validates first (basic) layer of authentication
             if (!isset($_SESSION['user_name'])) {
                 header("Location: index.php?error=Unauthenticated user detected");
+                $_SESSION['url'] = "resource.php";
                 exit();
             }
         } else {
@@ -17,7 +18,7 @@
             exit();
         }
     } else {
-        header("Location: unauthorized.php?error=Invalid user group attempted to access this web resource." . $_SERVER['SSL_CLIENT_S_DN_CN']);
+        header("Location: index.php?error=Unauthenticated user detected");
         exit();
     }
 ?>

@@ -3,21 +3,19 @@
 
     // Checks client side certificate for second layer of authenticatio
     if($_SERVER['SSL_CLIENT_VERIFY']) {
-
-        // Checks client attribute (in this case user) for authorization into web resource
-        if ($_SERVER['SSL_CLIENT_S_DN_CN'] === 'subodh') {
-            echo $_SERVER['SSL_CLIENT_S_DN_CN'];
-            //Validates first (basic) layer of authentication
-            if (!isset($_SESSION['user_name'])) {
-                header("Location: index.php?error=Unauthenticated user detected");
+        if (!isset($_SESSION['user_name'])) {
+            header("Location: index.php?error=Unauthenticated user detected");
+            exit();
+        } else {
+            // Checks client attribute (in this case user) for authorization into web resource
+            if (!($_SERVER['SSL_CLIENT_S_DN_CN'] === 'admin')) {
+                header("Location: unauthorized.php?error=Invalid user group attempted to access this web resource." . "Your user group is: ". $_SERVER['SSL_CLIENT_S_DN_CN']);
                 exit();
             }
-        } else {
-            header("Location: unauthorized.php?error=Invalid user group attempted to access this web resource." . "Your user group is: ". $_SERVER['SSL_CLIENT_S_DN_CN']);
-            exit();
         }
     } else {
-        header("Location: unauthorized.php?error=Invalid user group attempted to access this web resource." . $_SERVER['SSL_CLIENT_S_DN_CN']);
+        header("Location: index.php?error=Unauthenticated user detected");
+        $_SESSION['url'] = "admin-resource.php";
         exit();
     }
 ?>
